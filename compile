@@ -1,0 +1,18 @@
+#!/bin/sh  
+# Define some constants  
+ONSSERVER=ONSServer  
+PROJECT_PATH=/Users/hynial/test/php_java/java/Ebooking
+BIN_PATH=$PROJECT_PATH/bin  
+SRC_PATH=$PROJECT_PATH/src
+JAR_PATH=$SRC_PATH/lib 
+  
+# First remove the sources.list file if it exists and then create the sources file of the project  
+rm -f $SRC_PATH/sources.list
+find $SRC_PATH -name *.java > $SRC_PATH/sources.list  
+  
+# First remove the ONSServer directory if it exists and then create the bin directory of ONSServer  
+rm -rf $BIN_PATH/$ONSSERVER  
+mkdir $BIN_PATH/$ONSSERVER  
+  
+# Compile the project  
+javac -d $BIN_PATH/$ONSSERVER -classpath $JAR_PATH/commons-codec-1.6.jar:$JAR_PATH/commons-httpclient-3.1.jar:$JAR_PATH/commons-logging-1.1.1.jar:$JAR_PATH/filterbuilder.jar:$JAR_PATH/gson-2.2.4.jar:$JAR_PATH/htmllexer.jar:$JAR_PATH/htmlparser.jar @$SRC_PATH/sources.list
